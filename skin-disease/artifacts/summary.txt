@@ -1,0 +1,12 @@
+
+**Dataset audit:** 1,429 combined images became **748 representative image groups** after excluding 4 conflicting-label images. Near-duplicate detection found 735 candidate pairs. These are heuristic image groups, not verified independent patients.
+
+**Classification:** Frozen MobileNet embeddings with logistic regression achieved test **macro-F1 0.817**, balanced accuracy **0.834**, and accuracy **86.7%**. The histogram baseline's macro-F1 was **0.463**. This comparison describes agreement with these supplied labels, not diagnostic validity.
+
+**Human-review policy:** At the validation-selected threshold **0.548**, **134 of 150** test images received model labels and **16** were deferred. Accepted-only accuracy was **90.3% (Wilson 95% interval 84.1%–94.2%)**, with **13 incorrect accepted labels**. The illustrative 90% point-accuracy target **was met** on the test set. This is not a guarantee for future images.
+
+**Does deferral catch the mistakes?** It routed **7 of 20** incorrect model predictions to review, leaving **13** incorrect predictions accepted. Human review was not performed, so no errors are assumed to have been corrected. Meeting an aggregate accuracy target is not sufficient evidence for deployment.
+
+**Workload scenario:** Under the same image mix, 1,000 submissions would translate to approximately **107 human-review cases** and **87 incorrect accepted model labels**. No human-review accuracy, labor savings, or clinical benefit was measured; those outcomes require additional evidence.
+
+**Recommendation:** Retain this as a research prototype. Resolve conflicting labels with qualified review, establish patient/source provenance, replace stock-style controls with appropriately collected comparison images, and obtain an independently collected evaluation set before making a deployment decision. A threshold meeting the sample target cannot overcome these data limitations.
